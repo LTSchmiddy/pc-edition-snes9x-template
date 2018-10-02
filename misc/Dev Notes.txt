@@ -1,0 +1,109 @@
+7E0303 [0x01]:
+
+    In conjunction with the above variable when set to 0x13, matching the above
+    variable, the cape transformation is complete.
+                
+    This indicates which secondary item is equipped (aka Y-button
+    item).
+    
+    0x00 - Nothing
+    0x01 - Bombs
+    0x02 - Boomerang
+    0x03 - Arrows
+    0x04 - Hammer
+    0x05 - Fire Rod
+    0x06 - Ice Rod
+    0x07 - Bug catching net
+    0x08 - Flute
+    0x09 - Lamp
+    0x0A - Magic Powder
+    0x0B - Bottle
+    0x0C - Book of Mudora
+    0x0D - Cane of Byrna
+    0x0E - Hookshot
+    0x0F - Bombos Medallion
+    0x10 - Ether Medallion
+    0x11 - Quake Medallion
+    0x12 - Cane of Somaria
+    0x13 - Cape
+    0x14 - Magic Mirror
+    
+***************************
+I think these are the addresses for if you have items unlocked. Not sure what's what though.
+So far, I think that they just go left to right, line by line, of the UI I use in redux, like reading.
+    7EF340 = Bow
+    7EF341 = Boomerang
+    7EF342 = Hookshot
+    7EF343 = Bombs (Number of)
+    7EF344
+    7EF345
+    7EF346
+    7EF347
+    7EF348
+    7EF349
+    7EF34A = Lantern
+    7EF34B = Hammer
+    7EF34C
+    7EF34D
+    7EF34E
+    7EF34F
+    7EF350
+    7EF351
+    7EF352
+    7EF353 = Magic Mirror
+
+	
+7EF35C00
+7EF35D00
+7EF35E00
+7EF35F00
+	This code is for the bottles. Replace 00 with:
+01 - a mushroom
+02 - an empty bottle
+03 - red potion
+04 - green potion
+05 - blue potion
+06 - a fairy
+07 - a friendly bee
+08 - a rare friendly bee
+    
+***************************
+Next, I wanna know where the Player's Health and Magic is stored:
+I think this is what I need?
+
+Health:             7EF36C. Goal (capacity) Health. Each increment of $08 is worth one heart.
+                          $04 is a half heart. The max is generally $A0. 
+                          The game is coded to not accept health values beyond this.
+                  
+                    7EF36D. Actual Health. Same as above, but this reflects
+                          your current health status rather than potential.
+
+Magic Power:        7EF36E. Magic power ranges from 0 to $80 (128). Each small bottle refills $10. 
+                        Setting Magic above $80 causes the magic meter to glitch and you can't 
+                        use special items.
+
+Address of arrow count = 7EF377
+
+06D0F9EA: Item drops from enemies never disappear
+7E004810: Link Automatically pushes objects
+0790B927: No charge for dash
+
+***************************
+This will be handy for strafing:
+$50[0x01] - (Player)
+    
+    A flag indicating whether a change of the direction Link is facing is possible.
+    For example, when the B button is held down with a sword.
+    
+    0        - Can change
+    non zero - Can't change.
+    
+7E002F[0x01] - (Player)
+
+    0 - up
+    2 - down
+    4 - left
+    6 - right.
+    
+    The direction the player is currently facing. Other values should be
+    considered invalid. Mirrored at 7E0323

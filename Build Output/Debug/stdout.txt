@@ -1,0 +1,21 @@
+Reading config file D:\Project Z\Projects\Link to the Past - PC Edition\link-to-the-past-pc-edition-snes9x\link-to-the-past-pc-edition-snes9x\Build Output\Debug\snes9x.conf.
+No Rom Filename Given. Using 'main.smc' by default.Saving	config file	D:\Project Z\Projects\Link to the Past - PC Edition\link-to-the-past-pc-edition-snes9x\link-to-the-past-pc-edition-snes9x\Build Output\Debug\snes9x.conf
+Forcing the Menu to Hide...
+Sound buffer size: 8200 (2050 samples)
+Allowing jump straight to fullscreen!
+Rom File: main.smc
+No ROM file header found.Map_LoROMMap
+"THE LEGEND OF ZELDA" [bad checksum] LoROM, 8Mbits, ROM+RAM+BAT, NTSC, SRAM:64Kbits, ID:$__0, CRC32:3BC053C2
+Default GameConfig Path: D:\Project Z\Projects\Link to the Past - PC Edition\link-to-the-past-pc-edition-snes9x\link-to-the-past-pc-edition-snes9x\Build Output\Debug\Default_GameConfig.txt
+Opened GameConfig File 'D:\Project Z\Projects\Link to the Past - PC Edition\link-to-the-past-pc-edition-snes9x\link-to-the-past-pc-edition-snes9x\Build Output\Debug\Default_GameConfig.txt'
+Reading Config
+Enabling New Controls
+Enabling Instant Dash
+Disabling Auto Push
+Enabling Drops Never Vanish
+Enabling Balanced Health Regen
+Enabling Balanced Magic Regen
+ROM GameConfig Path: D:\Project Z\Projects\Link to the Past - PC Edition\link-to-the-past-pc-edition-snes9x\link-to-the-past-pc-edition-snes9x\Build Output\Debug\Patches\main_GameConfig.txt
+GameConfig File 'D:\Project Z\Projects\Link to the Past - PC Edition\link-to-the-past-pc-edition-snes9x\link-to-the-past-pc-edition-snes9x\Build Output\Debug\Patches\main_GameConfig.txt' not found. Continuing without...
+Sound buffer size: 8200 (2050 samples)
+Saving	config file	D:\Project Z\Projects\Link to the Past - PC Edition\link-to-the-past-pc-edition-snes9x\link-to-the-past-pc-edition-snes9x\Build Output\Debug\snes9x.conf
