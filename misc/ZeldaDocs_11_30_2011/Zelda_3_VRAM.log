@@ -1,0 +1,55 @@
+Zelda 3 VRAM Documentation by MathOnNapkins
+
+V0.2
+
+Last Updated 12/17/2006
+
+**************************************************************************
+
+
+
+
+**************************************************************************
+
+Module 7 (Dungeon) and Module 9 (Overworld)
+
+$0000-$1FFF BG2 Tilemap
+
+$2000-$3FFF BG1 Tilemap
+
+$4000-$7FFF 4bpp Tiles for BG0 and BG1 [They share :) ]
+
+$8000-$BFFF Sprite Graphics Memory
+
+	Sprite graphics can be seen as divided in half. Areas that have 0's as sprite
+	indexes will not overwrite the graphics from the previous screen. This
+	can cause inconsistent behavior though, so be careful.
+
+	--------------------------------------------------
+	$8000-$87FF Reserved Sprite Memory (Slot 0)
+
+	This region contains Link's body's current sprites, as well as various other essential sprites
+	that can't easily be taken out of memory. e.g. rupees, the sword and shield, etc.
+
+	$8800-$9FFF Locale Specific Graphics (Slots 1 - 3)
+
+	"Locale" in this sense can be one of three things: Dark World, Light World, or 
+	inside a Dungeon. This will determine what the pots and bushes you pick up look like,
+	(rocks as well) 
+
+	$A000-$BFFF Room / Area Specific Graphics (Slots 4 - 7)
+
+	Every overworld area and dungeon room has a graphics number that tells the game
+	which sprite graphics to load dynamically.
+
+$C000-$DFFF BG3 Tilemap
+
+$E000-$FFFF 2bpp Tiles for BG2 [This is the Heads up Display and Menu, etc]
+
+    $F800-$FFFF - used for text message data
+
+	- note that graphics packs 6A, 69, and 68 are used with srctypeone for this
+
+**************************************************************************
+
+

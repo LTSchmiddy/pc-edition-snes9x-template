@@ -1,0 +1,146 @@
+; Zelda decompression code
+; Commented by Peekin 2001.2.22
+
+; 65816 SNES Disassembler   v2.0a (C)opyright 1994  by John Corey
+; Begin: $00e7a3  End: $00e852
+; Hirom: No   Quiet: No   Comments: 2  DCB: No   Symbols: No   65816: No
+00e7a3 20 43 e8      JSR $e843      ; get next byte
+00e7a6 c9 ff         CMP #$ff       ; end of compressed stream if code = 0FFh
+00e7a8 d0 03         BNE $e7ad      ; continue if any other code
+00e7aa e2 10         SEP #$10       ; Index (8 bit)
+00e7ac 60            RTS            ; end of compression routine
+; get code and length (code is upper 3 bits, length is lower 5)
+00e7ad 85 cd         STA $cd        ; save byte
+00e7af 29 e0         AND #$e0       ; get code (upper 3 bits)
+00e7b1 c9 e0         CMP #$e0       ; special code for longer run count
+00e7b3 f0 0a         BEQ $e7bf     
+00e7b5 48            PHA            ; save code
+00e7b6 a5 cd         LDA $cd        ; retrieve byte
+00e7b8 c2 20         REP #$20       ; Accum (16 bit)
+00e7ba 29 1f 00      AND #$001f     ; mask byte to get length (lower 5 bits)
+00e7bd 80 12         BRA $e7d1
+; long run count
+00e7bf a5 cd         LDA $cd        ; retrieve byte
+00e7c1 0a            ASL            ; shift byte left 3 times for new code
+00e7c2 0a            ASL      
+00e7c3 0a            ASL      
+00e7c4 29 e0         AND #$e0       ; get new code (upper 3 bits)
+00e7c6 48            PHA            ; save code
+00e7c7 a5 cd         LDA $cd        ; retrieve original byte
+00e7c9 29 03         AND #$03       ; select lowest two bits for count
+00e7cb eb            XBA            ; save count's two msb in AH (*256)
+00e7cc 20 43 e8      JSR $e843      ; read next byte for a total 10bit count
+00e7cf c2 20         REP #$20     	; Accum (16 bit)
+; depending on if the code was E0, the count will either be 0-63 or 0-1023
+00e7d1 1a            INC            ; count++
+00e7d2 85 cb         STA $cb        ; store count
+00e7d4 e2 20         SEP #$20       ; Accum (8 bit)
+00e7d6 68            PLA            ; retrieve code
+00e7d7 f0 16         BEQ $e7ef      ; transfer bytes from source
+00e7d9 30 4a         BMI $e825      ; transfer bytes from output buffer
+00e7db 0a            ASL      
+00e7dc 10 20         BPL $e7fe      ; repeat single byte
+00e7de 0a            ASL      
+00e7df 10 2a         BPL $e80b      ; repeat two alternating bytes
+; repeat single incrementing byte??
+00e7e1 20 43 e8      JSR $e843      ; read single byte
+00e7e4 a6 cb         LDX $cb        ; load count
+00e7e6 97 00         STA [$00],Y    ; write byte
+00e7e8 1a            INC            ; increment byte value??
+00e7e9 c8            INY            ; destination ptr++
+00e7ea ca            DEX            ; count--
+00e7eb d0 f9         BNE $e7e6      ; loop while count <> 0
+00e7ed 80 b4         BRA $e7a3      ; go to top of loop for next code
+; transfer bytes directly
+00e7ef 20 43 e8      JSR $e843      ; read next byte to transfer
+00e7f2 97 00         STA [$00],Y    ; write byte
+00e7f4 c8            INY            ; destination ptr++
+00e7f5 a6 cb         LDX $cb        ; reload count (since ReadByte changed it)
+00e7f7 ca            DEX            ; count--
+00e7f8 86 cb         STX $cb        ; store count
+00e7fa d0 f3         BNE $e7ef      ; loop while count <> 0
+00e7fc 80 a5         BRA $e7a3      ; go to top of loop for next code
+; repeat single byte
+00e7fe 20 43 e8      JSR $e843      ; read single byte to repeat
+00e801 a6 cb         LDX $cb        ; load count
+00e803 97 00         STA [$00],Y    ; write byte
+00e805 c8            INY            ; destination ptr++
+00e806 ca            DEX            ; count--
+00e807 d0 fa         BNE $e803      ; loop while count <> 0
+00e809 80 98         BRA $e7a3      ; go to top of loop for next code
+; repeat run of alternating even/odd bytes
+00e80b 20 43 e8      JSR $e843      ; read first byte
+00e80e eb            XBA            ; save first byte into AH
+00e80f 20 43 e8      JSR $e843      ; read second byte
+00e812 a6 cb         LDX $cb        ; load count
+00e814 eb            XBA            ; swap first byte with second
+00e815 97 00         STA [$00],Y    ; write first byte
+00e817 c8            INY            ; destination ptr++
+00e818 ca            DEX            ; count--
+00e819 f0 07         BEQ $e822      ; exit loop if count = 0
+00e81b eb            XBA            ; swap first byte with second
+00e81c 97 00         STA [$00],Y    ; write second byte
+00e81e c8            INY            ; destination ptr++
+00e81f ca            DEX            ; count--
+00e820 d0 f2         BNE $e814      ; loop while count <> 0
+00e822 4c a3 e7      JMP $e7a3      ; go to top of loop for next code
+; copy run of bytes already in output buffer to end
+00e825 20 43 e8      JSR $e843      ; read low byte ptr
+00e828 eb            XBA      
+00e829 20 43 e8      JSR $e843      ; read high byte ptr
+00e82c eb            XBA      
+00e82d aa            TAX            ; copy buffer source to X
+00e82e 5a            PHY            ; save destination ptr
+00e82f 9b            TXY            ; move buffer source to Y for indexing
+00e830 b7 00         LDA [$00],Y    ; read existing buffer byte
+00e832 bb            TYX            ; copy back to X, why??
+00e833 7a            PLY            ; retrieve destination ptr
+00e834 97 00         STA [$00],Y    ; write byte
+00e836 c8            INY            ; destination ptr++
+00e837 e8            INX            ; buffer source++
+00e838 c2 20         REP #$20       ; Accum (16 bit)
+00e83a c6 cb         DEC $cb        ; count--
+00e83c e2 20         SEP #$20       ; Accum (8 bit)
+00e83e d0 ee         BNE $e82e      ; loop while count <> 0
+00e840 4c a3 e7      JMP $e7a3      ; go to top of loop for next code
+; read next byte
+00e843 a7 c8         LDA [$c8]      ; read single byte from ROM
+00e845 a6 c8         LDX $c8        ; load source ptr
+00e847 e8            INX            ; source ptr++
+00e848 d0 05         BNE $e84f      ; if not beyond end of bank
+00e84a a2 00 80      LDX #$8000     ; wrap source to beginning of next bank
+00e84d e6 ca         INC $ca        ; increment to next source bank
+00e84f 86 c8         STX $c8        ; store source ptr
+00e851 60            RTS            ; end of read byte
+00e852 ff ff ff ff   SBC $ffffff,X  ; those familiar separating FF's
+
+Compression Codes:
+000..... (00e7ef) - transfer bytes from source
+                    transfer Count bytes after code to buffer
+001..... (00e7fe) - repeat single byte
+                    read next byte and repeat Count times
+010..... (00e80b) - repeat two alternating bytes
+                    read next two bytes and alternately repeat
+011..... (00e7e1) - repeat single incrementing byte
+                    read next byte and repeat incrementing each time
+111..... (00e7bf) - long count
+                    bits 2-4 become 5-7 for the new code. bottom 2 bits
+                    become top two bits of count. read next byte for lower
+                    8 bits of count +1.
+1xx..... (00e825) - transfer bytes from output buffer
+                    read next two bytes for buffer source pointer (low/high)
+11111111 (00e7aa) - end of compressed stream
+
+Examples:
+  transfer bytes from source
+    03 12 34 56         -> 12 34 56
+  repeat single byte
+    23 12               -> 12 12 12
+  repeat two alternating bytes
+    45 12 34            -> 12 34 12 34 12
+  repeat single incrementing byte
+    63 12               -> 12 13 14
+  long count (followed by source transfer of 302h bytes)
+    E3 01 12 34 56 ..   -> 12 34 56 78 90 12 34 ...
+  transfer byte from output buffer (starting at offset 4)
+    83 00 04            -> 90 12 34

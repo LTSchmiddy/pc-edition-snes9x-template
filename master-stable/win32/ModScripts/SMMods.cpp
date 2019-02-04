@@ -83,6 +83,7 @@ const string AutoPushStr = "AutoPush";
 const string DropsNeverVanishStr = "DropsNeverVanish";
 const string BalancedHealthRegenStr = "BalancedHealthRegen";
 const string BalancedMagicRegenStr = "BalancedMagicRegen";
+const string BetterHeartsStr = "BetterHearts";
 
 
 
@@ -276,11 +277,25 @@ unsigned HealPerTick = 0x04;
 // MagicRegen Info:
 unsigned LastMagic = 0;
 const unsigned UseDelay = 600;
-unsigned UseDelayCounter = 0;
+unsigned UseDelayCounter = 600;
 const unsigned MFillDelay = 10;
 unsigned MFillDelayCounter = 0;
 unsigned MRegenPerTick = 1;
 
+bool ShouldRunRegen() {
+	if (AlexGetByteFree(0x7E0010) == 0x18) {
+		return true;
+
+	}
+
+	if (AlexGetByteFree(0x7E0010) >= 0x0C || AlexGetByteFree(0x7E0010) <= 0x05) {
+	//if (AlexGetByteFree(0x7E0010) == 0x0E) {
+		return false;
+	}
+
+	return true;
+
+}
 
 void SMMainLoop() {
 	if (NoChargeForDash) {
@@ -296,7 +311,9 @@ void SMMainLoop() {
 	}
 
 	//Do Health Regen:
-	if (BalancedHealthRegen) {
+
+
+	if (BalancedHealthRegen && ShouldRunRegen()){
 		bool hit = false;
 		
 		if (LastHealth > GetPlayerHealth()) {
@@ -326,7 +343,7 @@ void SMMainLoop() {
 
 
 	//Do Magic Regen:
-	if (BalancedMagicRegen) {
+	if (BalancedMagicRegen && ShouldRunRegen()) {
 		bool hit = false;
 
 		if (LastMagic > GetPlayerMagic()) {

@@ -19,4 +19,3 @@ ROM GameConfig Path: D:\Project Z\Projects\Link to the Past - PC Edition\link-to
 GameConfig File 'D:\Project Z\Projects\Link to the Past - PC Edition\link-to-the-past-pc-edition-snes9x\link-to-the-past-pc-edition-snes9x\Build Output\Release\Patches\main_GameConfig.txt' not found. Continuing without...
 Sound buffer size: 8200 (2050 samples)
 Saving	config file	D:\Project Z\Projects\Link to the Past - PC Edition\link-to-the-past-pc-edition-snes9x\link-to-the-past-pc-edition-snes9x\Build Output\Release\snes9x.conf
-Saving	config file	D:\Project Z\Projects\Link to the Past - PC Edition\link-to-the-past-pc-edition-snes9x\link-to-the-past-pc-edition-snes9x\Build Output\Release\snes9x.conf
