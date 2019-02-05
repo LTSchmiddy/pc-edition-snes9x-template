@@ -47,6 +47,8 @@ extern bool UseNewControls;
 
 
 //Methods:
+bool ShouldRunRegen();
+
 void HideMenu(void);
 void SMOnLoadState(void);
 

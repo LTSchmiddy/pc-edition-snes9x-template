@@ -1,4 +1,3 @@
-# link-to-the-past-pc-edition-snes9x
 A port of the Snes9x emulator
 
 DISCLAIMER: 'The Legend of Zelda: A Link to the Past' and the entire 'The Legend of Zelda' franchise are the intellectual property of Nintendo Co., Ltd. I have no affiliation with them, nor do I have any legal rights or ownership over the aforementioned properties. I'm just a fan.
@@ -29,9 +28,9 @@ Table of Contents:
 
 ===== 1) Introduction =============================================================================== (TBH, you've probably already read this part whereever you downloaded this project.)
 
-Well, with how well my "Super Metroid - PC Edition" (aka: SMPE) project turned out (or, at least, how happy I was with with it), I figured: why stop here? Figuring out the guts of the Snes9X enough to figure out where/how to insert my game features and tweaks had been the tricky part. Once I solved that, coding the actual features themselves was fairly straightforward. I could easily generalize my source-code, and use it to build custom emulators for other retro games as well. Specifically, one other game I wanted to do this for was "The Legend of Zelda: A Link to the Past": While it is a time-honored classic and a fun game in its own right, I'm of the opinion that some aspects of the game could have aged better.
+Well, with how well my "Super Metroid - PC Edition" (aka: SMPCE) project turned out (or, at least, how happy I was with with it), I figured: why stop here? Figuring out the guts of the Snes9X enough to figure out where/how to insert my game features and tweaks had been the tricky part. Once I solved that, coding the actual features themselves was fairly straightforward. I could easily generalize my source-code, and use it to build custom emulators for other retro games as well. Specifically, one other game I wanted to do this for was "The Legend of Zelda: A Link to the Past": While it is a time-honored classic and a fun game in its own right, I'm of the opinion that some aspects of the game could have aged better.
 
-I actually started working on this about halfway through my development of SMPE. While I had it mostly finished at about that time, there was having difficulty finding the memory address of a specific variable. After playing with it on and off for the last couple months, I stumbled on the solution somewhat by accident. After implementing it, I feel confident that this is ready for a public release.
+I actually started working on this about halfway through my development of SMPCE. While I had it mostly finished at about that time, there was having difficulty finding the memory address of a specific variable. After playing with it on and off for the last couple months, I stumbled on the solution somewhat by accident. After implementing it, I feel confident that this is ready for a public release.
 
 *********************
 

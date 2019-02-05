@@ -92,7 +92,7 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\Build Output\Release</OutDir>
     <IntDir>$(SolutionDir)_Intermediate\$(ProjectName)\$(Configuration)\$(PlatformTarget)\</IntDir>
-    <TargetName>LOZ A Link to the Past - PC Edition</TargetName>
+    <TargetName>LOZ A Link to the Past - PC Edition v0.1</TargetName>
     <IncludePath>$(DXSDK_DIR)include;$(CG_INC_PATH);$(IncludePath)</IncludePath>
     <LibraryPath>$(DXSDK_DIR)Lib\$(PlatformTarget);$(CG_LIB_PATH);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
@@ -644,7 +644,7 @@
     </CustomBuild>
     <None Include="rsrc\nodrop.cur" />
     <None Include="rsrc\rt_manif.bin" />
-    <CustomBuild Include="snes9x.cfg">
+    <CustomBuild Include="snes9x.conf">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Unicode|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Unicode|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Unicode|Win32'">true</ExcludedFromBuild>

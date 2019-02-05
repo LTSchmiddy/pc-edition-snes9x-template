@@ -851,6 +851,6 @@
     <CustomBuild Include="..\filter\hq2x.h">
       <Filter>Filter</Filter>
     </CustomBuild>
-    <CustomBuild Include="snes9x.cfg" />
+    <CustomBuild Include="snes9x.conf" />
   </ItemGroup>
 </Project>

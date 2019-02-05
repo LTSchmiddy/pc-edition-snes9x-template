@@ -8256,7 +8256,8 @@ void SetInputUIText(HWND hDlg, int input) {
 		SetDlgItemText(hDlg, IDC_LABEL_L, TEXT("Previous Item"));
 		SetDlgItemText(hDlg, IDC_LABEL_R, TEXT("Next Item"));
 		SetDlgItemText(hDlg, IDC_LABEL_START, TEXT("Show Inventory"));
-		SetDlgItemText(hDlg, IDC_LABEL_SELECT, TEXT("Show In-Game Menu"));
+		SetDlgItemText(hDlg, IDC_LABEL_SELECT, TEXT("Show Save Menu"));
+		//SetDlgItemText(hDlg, IDC_LABEL_SELECT, TEXT("Show In-Game Menu"));
 		SetDlgItemText(hDlg, IDC_LABEL_UPRIGHT, INPUTCONFIG_LABEL_UNUSED);
 		SetDlgItemText(hDlg, IDC_LABEL_UPLEFT, INPUTCONFIG_LABEL_UNUSED);
 		SetDlgItemText(hDlg, IDC_LABEL_DOWNRIGHT, INPUTCONFIG_LABEL_UNUSED);
@@ -8350,13 +8351,13 @@ switch(msg)
 		for(i=1;i<6;i++)
 		{
 			if (i == 1) {
-				_stprintf(temp, TEXT("Main Controls"));
+				_stprintf(temp, TEXT("Game Controls - Page 1"));
 			}
 			else if (i == 2) {
-				_stprintf(temp, TEXT("New Controls 1"));
+				_stprintf(temp, TEXT("Game Controls - Page 2"));
 			}
 			else if (i == 3) {
-				_stprintf(temp, TEXT("Equipment Select"));
+				_stprintf(temp, TEXT("-- Not Used --"));
 			}
 			else if (i == 4) {
 				_stprintf(temp, TEXT("Menu Controls"));

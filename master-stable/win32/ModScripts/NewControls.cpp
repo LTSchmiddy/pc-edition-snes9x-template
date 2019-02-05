@@ -112,32 +112,43 @@ unsigned OldItem = 0xff;
 
 //Methods:
 
+bool SetMenuControls(bool pressedIn) {
+
+	if (AlexGetByteFree(0x7E0010) >= 0x0C || AlexGetByteFree(0x7E0010) <= 0x05) {
+		//if (AlexGetByteFree(0x7E0010) == 0x0E) {
+		return pressedIn;
+	}
+
+	return false;
+
+}
+
 bool NewControlsInputUpdate(uint32 id, bool pressed) {
 
 	
 	if (id == Menu_Up) {
 		//printf("\nPressing Up\n");
-		MenuPressed_Up = pressed;
+		MenuPressed_Up = SetMenuControls(pressed);
 	}
 
 	else if (id == Menu_Down) {
-		MenuPressed_Down = pressed;
+		MenuPressed_Down = SetMenuControls(pressed);
 	}
 
 	else if (id == Menu_Left) {
-		MenuPressed_Left = pressed;
+		MenuPressed_Left = SetMenuControls(pressed);
 	}
 
 	else if (id == Menu_Right) {
-		MenuPressed_Right = pressed;
+		MenuPressed_Right = SetMenuControls(pressed);
 	}
 
 	else if (id == Menu_A) {
-		MenuPressed_A = pressed;
+		MenuPressed_A = SetMenuControls(pressed);
 	}
 
 	else if (id == Menu_B) {
-		MenuPressed_B = pressed;
+		MenuPressed_B = SetMenuControls(pressed);
 	}
 
 
@@ -232,97 +243,3 @@ void Input_OnUpdate() {
 	
 
 }
-
-
-
-//if (id == QuickBow) {
-//	if (HasItem(HasBowAddress) && pressed && lastPress == 0) {
-//		lastPress = QuickBow;
-//		OldItem = AlexGetByteFree(ItemAddress);
-//		AlexSetByteFree(BowIndex, ItemAddress);
-//		//printf("FireBow\n");
-//		ForceItemButton = true;
-//	}
-//	else if (!pressed && lastPress == QuickBow) {
-//		lastPress = 0;
-//		AlexSetByteFree(OldItem, ItemAddress);
-//		ForceItemButton = false;
-//	}
-//}
-
-//if (id == QuickBoomerang) {
-//	if (HasItem(HasBoomerangAddress) && pressed && lastPress == 0) {
-//		lastPress = QuickBoomerang;
-//		OldItem = AlexGetByteFree(ItemAddress);
-//		AlexSetByteFree(BoomerangIndex, ItemAddress);
-//		//printf("FireBow\n");
-//		ForceItemButton = true;
-//	}
-//	else if (!pressed && lastPress == QuickBoomerang) {
-//		lastPress = 0;
-//		AlexSetByteFree(OldItem, ItemAddress);
-//		ForceItemButton = false;
-//	}
-//}
-
-//if (id == QuickHookshot) {
-//	if (HasItem(HasHookshotAddress) && pressed && lastPress == 0) {
-//		lastPress = QuickHookshot;
-//		OldItem = AlexGetByteFree(ItemAddress);
-//		AlexSetByteFree(HookshotIndex, ItemAddress);
-//		//printf("FireBow\n");
-//		ForceItemButton = true;
-//	}
-//	else if (!pressed && lastPress == QuickHookshot) {
-//		lastPress = 0;
-//		AlexSetByteFree(OldItem, ItemAddress);
-//		ForceItemButton = false;
-//	}
-//}
-
-//if (id == QuickBomb) {
-//	if (HasItem(HasBombsAddress) && pressed && lastPress == 0) {
-//		lastPress = QuickBomb;
-//		OldItem = AlexGetByteFree(ItemAddress);
-//		AlexSetByteFree(BombIndex, ItemAddress);
-//		//printf("FireBow\n");
-//		ForceItemButton = true;
-//	}
-//	else if (!pressed && lastPress == QuickBomb) {
-//		lastPress = 0;
-//		AlexSetByteFree(OldItem, ItemAddress);
-//		ForceItemButton = false;
-//	}
-//}
-
-
-//if (id == QuickHammer) {
-//	if (HasItem(HasHammerAddress) && pressed && lastPress == 0) {
-//		lastPress = QuickHammer;
-//		OldItem = AlexGetByteFree(ItemAddress);
-//		AlexSetByteFree(HammerIndex, ItemAddress);
-//		//printf("FireBow\n");
-//		ForceItemButton = true;
-//	}
-//	else if (!pressed && lastPress == QuickHammer) {
-//		lastPress = 0;
-//		AlexSetByteFree(OldItem, ItemAddress);
-//		ForceItemButton = false;
-//	}
-//}
-
-//if (id == QuickLamp) {
-//	if (HasItem(HasLampAddress) && pressed && lastPress == 0) {
-//		lastPress = QuickLamp;
-//		OldItem = AlexGetByteFree(ItemAddress);
-//		AlexSetByteFree(LampIndex, ItemAddress);
-//		//printf("FireBow\n");
-//		ForceItemButton = true;
-//	}
-//	else if (!pressed && lastPress == QuickLamp) {
-//		lastPress = 0;
-//		AlexSetByteFree(OldItem, ItemAddress);
-//		ForceItemButton = false;
-//	}
-//}
-
