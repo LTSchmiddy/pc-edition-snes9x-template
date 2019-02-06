@@ -53,27 +53,49 @@ I've added a number of additional controls to the game. This system works by hij
 
 
 **** Vanilla Controls ****
+
 Movement: WASD 
+
 Action/Interact/Pegasus Boots: Space Bar
+
 Use Sword: J
+
 Use Secondary Item: K
+
 Previous Item: L (if using the redux ROM)
+
 Next Item: U (if using the redux ROM)
+
 Show/Hide Inventory Screen: Q
+
 Show/Hide Map Screen: Tab
+
 Show Save Menu: ` [Tilde]
 
+
+
 **** New Controls ****
+
 Strafe: Left Shift
+
 Quick Boomerang: M
+
 Quick Bow: N
+
 Quick Hookshot: H
+
 Quick Bombs: L
+
 Quick Lantern: ; [Semi-Colon]
+
 Quick Hammer: E
 
+
+
 Menu - Navigate: Arrow Keys
+
 Menu - Select/Confirm: Enter
+
 Menu - Back/Cancel: Backspace
 
 Pause Game: Escape (Not in menus)
