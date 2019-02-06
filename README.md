@@ -7,7 +7,7 @@ Then again, you probably new that.
 
 DISCLAIMER 2: This README is designed for someone not TOO familiar with emulation and ROM-Hacking. Sorry if this is too dumbed down for you. Please read the whole thing anyway.
 
-Download Latest Stable Build
+Download Latest Stable Build: https://github.com/LTSchmiddy/link-to-the-past-pc-edition-snes9x/releases
 
 ===================================================================================================== Date of Readme: 2/5/2019
 
@@ -105,7 +105,7 @@ b) IMPROVED MOVEMENT:
 
 Admittedly, because of ALTTP's simplistic movement controls, it can be VERY difficult to avoid taking damage from enemies because your shield is largely useless. It works when you're standing in the exact right spot, and if you turn away to adjust your position the shield is no longer between you and your enemy. Basically, it's very difficult to actually make use of.
 
-To fix this, I've added a strafe button (Left Shift by default) to the emulator. While holding it, Link will continue to face the same direction reqardless of what direction you move in. This way, you can more easily position yourself so that your shield in between you and that incoming enemy or projectile.
+To fix this, I've added a strafe button (Left Shift by default) to the emulator. While holding it, Link will continue to face the same direction regardless of what direction you move in. This way, you can more easily position yourself so that your shield in between you and that incoming enemy or projectile.
 
 Additionally, I've made the it so there is no wind-up time for running with the Pegesus Boots. In all of the later titles in the series, Link has his incredibly handy dive-roll to help him quickly manuver away from enemy attacks in a pinch. By removing the wind-up time on the Pegesus Boots, they can be used in a similar manner.
 
