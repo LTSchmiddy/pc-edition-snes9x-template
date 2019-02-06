@@ -1,1 +1,0 @@
-address = 0x7e0010, name = "?", size = 1, format = 1

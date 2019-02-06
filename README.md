@@ -70,7 +70,7 @@ Show/Hide Inventory Screen: Q
 
 Show/Hide Map Screen: Tab
 
-Show Save Menu: ` [Tilde]
+Show Save Menu: ` [Back-tick]
 
 
 

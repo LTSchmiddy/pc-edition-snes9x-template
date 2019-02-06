@@ -1,0 +1,18 @@
+UseNewControls
+true
+
+NoChargeForDash
+true
+
+DropsNeverVanish
+true
+
+BalancedHealthRegen
+true
+
+BalancedMagicRegen
+true
+
+# ===== Bugg. Leave this turned off. =====
+AutoPush
+false
